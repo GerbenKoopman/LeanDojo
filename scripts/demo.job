@@ -14,6 +14,20 @@ module load Anaconda3/2024.06-1
 
 source activate lean-reinforcement
 
+# Source environment variables
+set -a
+source $HOME/leandojo/.env
+set +a
+
+# CRITICAL: Prevent any redundant tracing or building
+export LEAN_CACHE_ONLY=1
+export DISABLE_BUILD_DEPS=1
+export LOAD_USED_PACKAGES_ONLY=1
+
+# Additional safeguards against rebuilding
+export NO_LAKE_BUILD=1
+export SKIP_DEPENDENCIES=1
+
 cd $HOME/leandojo/scripts
 
 srun python3 demo-lean4.py

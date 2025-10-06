@@ -8,6 +8,13 @@ repo = LeanGitRepo(
 
 traced_repo = trace(repo)
 
+# Manually set the back-reference from each TracedFile to the TracedRepo.
+# This is needed because TracedFile.traced_repo is not serialized, and the
+# loading process in this version of the library doesn't restore it,
+# causing an AssertionError in check_sanity.
+for tf in traced_repo.traced_files:
+    tf.traced_repo = traced_repo
+
 traced_file = traced_repo.get_traced_file("Mathlib/Algebra/BigOperators/Pi.lean")
 
 traced_theorems = traced_file.get_traced_theorems()

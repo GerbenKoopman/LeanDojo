@@ -16,4 +16,4 @@ source activate lean-reinforcement
 
 cd $HOME/leandojo/scripts
 
-srun python3 demo.py
+srun python3 demo-lean4.py

@@ -20,13 +20,7 @@ source $HOME/leandojo/.env
 set +a
 
 # CRITICAL: Prevent any redundant tracing or building
-export LEAN_CACHE_ONLY=1
-export DISABLE_BUILD_DEPS=1
 export LOAD_USED_PACKAGES_ONLY=1
-
-# Additional safeguards against rebuilding
-export NO_LAKE_BUILD=1
-export SKIP_DEPENDENCIES=1
 
 cd $HOME/leandojo/scripts
 
